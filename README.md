@@ -1,7 +1,7 @@
 
 ***
 
-# Welcome to The prototype projects repository!
+# Welcome to The Teacher's Administration Dahsboard project's repository!
 
 ***
 
@@ -32,7 +32,7 @@
 
 ***
  
-![](https://wallpaperaccess.com/full/323073.jpg)
+![](https://images.ctfassets.net/hrltx12pl8hq/kfASR91HrTGb0Cr32dS9j/3a8462b092b7b6ffb27ec9863fc3a138/04-abstract-backgrounds_1816244150.jpg)
 
 ### Arios Amigos!
 ### Powering off...
