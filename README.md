@@ -5,7 +5,9 @@
 
 ***
 
-## Some info about us:
+## Important information:
+
+### This project is designed as a template, and can be used for multiple purposes, you can check the source code and change/insert your desired destination folder/link and hook them up to this app.
 
 ### The projects hooked with this specific repository are developer-friendly and consist of prototype projects. This is just a start-up repository and is not supposed to be handling complete, descriptive projects.
 
