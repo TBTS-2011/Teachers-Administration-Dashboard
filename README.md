@@ -5,39 +5,20 @@
 
 ***
 
-## Important information:
+## About this project:
 
-### This project is designed as a template, and can be used for multiple purposes, you can check the source code and change/insert your desired destination folder/link and hook them up to this app.
+### This a project that is made for teachers, who can have administrative access over their student's students track record on the work that the student should perform, projects, home works, academic and other extracurricular activities.
 
-### The projects hooked with this specific repository are developer-friendly and consist of prototype projects. This is just a start-up repository and is not supposed to be handling complete, descriptive projects.
+## NOTE:
 
-### The below is only a reference to our security policies, we will probably update them when any three of our issues are fixed. Don't worry! That will definitely happen soon! To learn more about our security policy, please visit this link: https://github.com/pavans2011/prototype_projects/blob/main/SECURITY.md?plain=1
+### This project contains some blank links, so it's best recommended filling in your desired links and your desktop location in those blank links.
 
-| Version | Supported          |
-| ------- | ------------------ |
-| 5.1.x   | :white_check_mark: |
-| 5.0.x   | :x:                |
-| 4.0.x   | :white_check_mark: |
-| < 4.0   | :x:                |
+## Preview:
 
-***
+### Home page:
+![Screenshot 2024-05-31 193543](https://github.com/TBTS-pvt-ltd-2011/TEACHERS_ADMINISTRATION_DASHBOARD/assets/135034771/f25aa23b-d7c2-452d-80a0-d096321d71d9)
 
-## Our privacy policy: 
+### Settings page:
+![Screenshot 2024-05-31 193730](https://github.com/TBTS-pvt-ltd-2011/TEACHERS_ADMINISTRATION_DASHBOARD/assets/135034771/c20a6998-db2d-4f56-9d3b-d4994ded794e)
 
-### This section tells people about which versions of our project are currently being supported with security updates that would be updated alongside our terms and conditions, the chart below is a representation of what versions of our products are supported by our security policy.
-
-***
-
-
-### We are honoured and very enthusiastic about gathering collaborators and our start-up projects are being used and rewarded, which is the sole purpose of this GitHub repository... So please, it would be rewarding if many more of a generation of beta testers could join forces and promote our products!
-
-
-***
- 
-![](https://images.ctfassets.net/hrltx12pl8hq/kfASR91HrTGb0Cr32dS9j/3a8462b092b7b6ffb27ec9863fc3a138/04-abstract-backgrounds_1816244150.jpg)
-
-### Arios Amigos!
-### Powering off...
-
-***
-
+### You can finish importing your links and desktop location into the code and check the rest of the project pages.
