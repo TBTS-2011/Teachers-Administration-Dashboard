@@ -1,8 +1,8 @@
-# Welcome to The Teacher's Administration Dahsboard project's repository!
+# Welcome to The Teacher's Administration Dashboard project's repository!
 
 ## About this project:
 
-This a project that is made for teachers, who can have administrative access over their student's track record on the work that they should perform. Projects, homework, and academic and other extracurricular activities are also available in this program. You can check, view and modify student's track records using this program, and it also provides a great GUI for the user and makes the workspace very simple and organised. 
+This a project that is made for teachers, who can have administrative access over their student's track record on the work that they should perform. Projects, homework, and academic and other extracurricular activities are also available in this program. You can check, view and modify student's track records using this program, and it also provides a great GUI for the user and makes the workspace very simple and organized. 
 
 ## NOTE:
 
