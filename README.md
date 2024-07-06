@@ -1,12 +1,19 @@
-# Welcome to The Teacher's Administration Dashboard project's repository!
+# <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/File%20Cabinet.png" alt="File Cabinet" width="69" height="69" /> Welcome to The Teacher's Admin Dashboard project's repository!
 
 ## About this project:
 
 This a project that is made for teachers, who can have administrative access over their student's track record on the work that they should perform. Projects, homework, and academic and other extracurricular activities are also available in this program. You can check, view and modify student's track records using this program, and it also provides a great GUI for the user and makes the workspace very simple and organized. 
 
-## NOTE:
+<strong>NOTE:</strong> This project contains some blank links, so it's up to you to fill in your desired links and your desktop location in those blank links for this project to work as expected. Previews of this program are given below.
 
-This project contains some blank links, so it's recommended to fill in your desired links and your desktop location in those blank links for this project to work as expected—previews of this program are given below.
+### Patches:
+
+Updates and security patches will be provided regularly, and maintenance of this program is guaranteed.
+
+| Versions | Supported          |
+| -------  | ------------------ |
+| 1.0.0    | :white_check_mark: |
+| 1.0.1    | :x:                |
 
 ## Preview:
 
