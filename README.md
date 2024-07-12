@@ -12,8 +12,9 @@ Updates and security patches will be provided regularly, and maintenance of this
 
 | Versions | Supported          |
 | -------  | ------------------ |
-| 1.0.0    | :white_check_mark: |
+| 1.0.0    | :x:                |
 | 1.0.1    | :x:                |
+| 1.2.0    | :white_check_mark: |
 
 ## Preview:
 
