@@ -11,7 +11,7 @@ This project contains many settings files. The reason for this is that if you ob
 | Versions | Supported          |
 | -------  | ------------------ |
 | 1.0.0    | :x:                |
-| 1.1.0    | :white_check_mark: |
+| 1.1.0    | :x:                |
 | 1.2.0    | :white_check_mark: |
 
 ## Preview:
