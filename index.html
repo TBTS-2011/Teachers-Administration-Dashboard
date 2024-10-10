@@ -1,326 +1,523 @@
- 
 <!DOCTYPE html>
-<html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teacher's Dashboard</title>
-    <link rel="stylesheet" href="res/bootstrap@5.2.0.min.css">
-    <link rel="stylesheet" href="res/chartist.min.css">
-    <div id="core_css">
 
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teacher's Dashboard</title>
+  <link rel="stylesheet" href="res/bootstrap@5.2.0.min.css">
+  <link rel="stylesheet" href="res/chartist.min.css">
+  <div id="core_css">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
       integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
-  
-      </div>
-  
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
 
-      
-    <style>
-        .sidebar {
-            position: fixed;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            z-index: 100;
-            padding: 90px 0 0;
-            box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
-            z-index: 99;
-        }
+  </div>
 
-        @media (max-width: 767.98px) {
-            .sidebar {
-                top: 11.5rem;
-                padding: 0;
-            }
-        }
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
 
-        .navbar {
-            box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .1);
-        }
 
-        @media (min-width: 767.98px) {
-            .navbar {
-                top: 0;
-                position: sticky;
-                z-index: 999;
-            }
-        }
+  <style>
+    .sidebar {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 100;
+      padding: 90px 0 0;
+      box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+      z-index: 99;
+    }
 
-        .sidebar .nav-link {
-            color: #333;
-        }
+    @media (max-width: 767.98px) {
+      .sidebar {
+        top: 11.5rem;
+        padding: 0;
+      }
+    }
 
-        .sidebar .nav-link.active {
-            color: #0d6efd;
-        }
-    </style>
+    .navbar {
+      box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .1);
+    }
+
+    @media (min-width: 767.98px) {
+      .navbar {
+        top: 0;
+        position: sticky;
+        z-index: 999;
+      }
+    }
+
+    .sidebar .nav-link {
+      color: #333;
+    }
+
+    .sidebar .nav-link.active {
+      color: #000000;
+    }
+
+    .sidebar .nav-link.active:hover {
+      background-color: #0d6efd;
+      color: #ffffff;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: ease-out 0.6s;
+    }
+
+    footer {
+      text-align: center;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 5px;
+      color: #000000;
+      font-size: 20px;
+      background-color: rgb(255, 255, 255);
+      border-radius: 27px;
+    }
+
+    footer:hover {
+      background-color: #4983ffa3;
+      cursor: pointer;
+      transition: ease-out 0.6s;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+    }
+
+    .today {
+      background-color: #4983ffa3;
+      border-radius: 15px;
+    }
+
+    .today:hover {
+      color: white;
+      background-color: #0d6efd;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: ease-out 0.6s;
+    }
+
+    #events-table {
+      width: 100%;
+      margin-top: 20px;
+      border-collapse: collapse;
+    }
+
+    #events-table th,
+    #events-table td {
+      padding: 8px;
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+  </style>
 </head>
+
 <body>
-    <nav class="navbar navbar-light bg-light p-3">
-        <div class="d-flex col-12 col-md-3 col-lg-2 mb-2 mb-lg-0 flex-wrap flex-md-nowrap justify-content-between">
-            <a class="navbar-brand" href=""> <!--NOTE: The file destination should be changed before running this project.-->
-            Teacher's Dashboard
-            </a>
-            <button class="navbar-toggler d-md-none collapsed mb-3" type="button" data-toggle="collapse" data-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>                                                                                                                                                                                                                                                                                                                                                                                                        <!--This is proof that Pavan had made this website!-->
-        <div class="col-12 col-md-4 col-lg-2">
-            <input class="form-control form-control-dark" type="text" placeholder="Search" aria-label="Search">
-        </div>
-        <div class="col-12 col-md-5 col-lg-8 d-flex align-items-center justify-content-md-end mt-3 mt-md-0">
-            <div class="mr-3 mt-1">
-
-            </div>
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false" style="background-color: #0d6efd;">
-                  Good Evening!
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <li><a class="dropdown-item" href="">Settings</a></li>
-                 <!--NOTE: The file destination should be changed before running this project.-->
-                  <li><a class="dropdown-item" href="">Messages</a></li>
-                 <!--NOTE: The file destination should be changed before running this project.-->
-                  <li><a class="dropdown-item" href=""><strong>Home</strong></a></li>
-                 <!--NOTE: The file destination should be changed before running this project.-->
-                </ul>
-              </div>
-        </div>
-    </nav>
-    <div class="container-fluid">
-        <div class="row">
-            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-                <div class="position-sticky">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                          <a class="nav-link active" aria-current="page" href=""> <!--NOTE: The file destination should be changed before running this project.-->
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-                            <span class="ml-2">Dashboard</span>
-                          </a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href=""> <!--Add your own link here.-->
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
-                            <span class="ml-2">Events</span>
-                          </a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href=""> <!--Add your own link here.-->
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-                            <span class="ml-2">About</span>
-                          </a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href=""> <!--Add your own link here.-->
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                            <span class="ml-2">Facilities</span>
-                          </a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href=""> <!--Add your own link here.-->
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart-2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
-                            <span class="ml-2">Contact</span>
-                          </a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href=""> <!--NOTE: The file destination should be changed before running this project.-->
-                            <svg xmlns="http://www.w3.org/2000/svg"  width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
-                            <span class="ml-2">Privacy Policy</span>
-                          </a>
-                        </li>
-            </nav>
-            <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="">Home</a></li> <!--NOTE: The file destination should be changed before running this project.-->
-                        <li class="breadcrumb-item active" aria-current="page"><a href="">Overview</a></li> <!--Add your own link here.-->
-                    </ol>
-                </nav>
-                <div class="container-fluid">
-                  <div class="row">
-          
-                          <div class="row my-4">
-                            <div class="col-12 col-md-6 col-lg-3 mb-4 mb-lg-0">
-                                <div class="card">
-                                    <h5 class="card-header">Computer Science Expo:</h5>
-                                    <div class="card-body">
-                                        <p>
-                                          This section includes the students who are willing to participate in
-                                            The Computer Science Expo held in our school
-                                            during 2024-2025 and you are assigned to manage all the incoming
-                                            submissions.
-                                        </p>
-                                      <h5 class="card-title">34</h5>
-                                      <p class="card-text">October 1 - November 1</p>                      
-                                    </div>
-                                  </div>
-                            </div>
-
-                            <div class="col-12 col-md-6 mb-4 mb-lg-0 col-lg-3">
-                              <div class="card">
-                                  <h5 class="card-header">Current month Admissions:</h5>
-                                  <div class="card-body">
-                                      <p>
-                                        This includes the new students who are admitted
-                                          to our school based on the of 
-                                          TCs per unit (students) from other schools.
-                                      </p>
-                                    <h5 class="card-title">11</h5>
-                                    <p class="card-text">October 1 - November 1</p>
-                                    <p class="card-text text-danger">2.6% increase since last month</p>
-                                  </div>
-                                </div>
-                          </div>
-          
-                          <div class="col-12 col-md-6 mb-4 mb-lg-0 col-lg-3">
-                              <div class="card">
-                                  <h5 class="card-header">Current month Salary:</h5>
-                                  <div class="card-body">
-                                      <p>
-                                        This includes your salary raise and penalty rate
-                                          that are prominent in your salary, 
-                                          depending on your workflow, your contribution
-                                          towards the school and overall behaviour during 
-                                          class schedules.
-                                      </p>
-                                    <h5 class="card-title">Rs. 20k</h5>
-                                    <p class="card-text">October 1 - November 1</p>
-                                  </div>
-                                </div>
-                          </div>
-          
-                          <div class="col-12 col-md-6 mb-4 mb-lg-0 col-lg-3">                           
-                              <div class="card">
-                                  <h5 class="card-header">Homework completion:</h5>
-                                  <div class="card-body">
-                                      <p>
-                                        This section includes the deadlines that you 
-                                          have set for your students to complete their homework,      
-                                          and to render those who have not completed their homework.
-                                      </p>
-                                    <h5 class="card-title">4 / 23 Students</h5>
-                                    <p class="card-text">October 1 - November 1</p>
-                                  </div>
-                                </div>
-                          </div>
-                        </div>
-          
-                        <strong>
-                          <p>The below are the students who submitted their homework before the deadline. You have 
-                             assigned the deadline, and the students who did not complete their homework
-                             won't be visible in this table, so that you can easily filter them out, and is 
-                             sorted in the roll number-wise order.
-                          </p>
-                        </strong><br>
-          
-                        <div class="row">
-                          <div class="col-12 col-xl-8 mb-4 mb-lg-0">
-                              <div class="card">
-                                  <h5 class="card-header">Recent Homework submissions:</h5>
-                                  <div class="card-body">
-                                      <div class="table-responsive">
-                                          <table class="table">
-                                              
-                                              <tbody>
-                                                <tr>
-                                                  <th scope="row">Briar Mendoza</th>
-                                                  <td>BriarMendoza1969@gmail.com</td>
-                                                  <td>July 31 2024</td>
-                                                  <td><a href="" class="btn btn-sm btn-primary">View</a></td> <!--NOTE: The file destination should be changed before running this project.-->
-                                                </tr>
-                                                <tr>
-                                                  <th scope="row">Dominic Curtis</th>
-                                                  <td>DominicCurtis1970@gmail.com</td>
-                                                  <td>July 28 2024</td>
-                                                  <td><a href="l" class="btn btn-sm btn-primary">View</a></td> <!--NOTE: The file destination should be changed before running this project.-->
-                                                </tr>
-                                                <tr>
-                                                  <th scope="row">Alexis Welch</th>
-                                                  <td>AlexisWelch1971@gmail.com</td>
-                                                  <td>June 31 2024</td>
-                                                  <td><a href="" class="btn btn-sm btn-primary">View</a></td> <!--NOTE: The file destination should be changed before running this project.-->
-                                                </tr>
-                                                <tr>
-                                                  <th scope="row">Hendrix Huang</th>
-                                                  <td>HendrixHuang1972@gmail.com</td>
-                                                  <td>June 28 2024</td>
-                                                  <td><a href="" class="btn btn-sm btn-primary">View</a></td> <!--NOTE: The file destination should be changed before running this project.-->
-                                                </tr>
-                                                <tr>
-                                                  <th scope="row">Francesca Rangel</th>
-                                                  <td>FrancescaRangel1973@gmail.com</td>
-                                                  <td>May 31 2023</td>
-                                                  <td><a href="" class="btn btn-sm btn-primary">View</a></td> <!--NOTE: The file destination should be changed before running this project.-->
-                                                </tr>
-                                                <tr>
-                                                  <th scope="row">Saint Brady</th>
-                                                  <td>SaintBrady1974@gmail.com</td>
-                                                  <td>May 28 2023</td>
-                                                  <td><a href="" class="btn btn-sm btn-primary">View</a></td> <!--NOTE: The file destination should be changed before running this project.-->
-                                                </tr>
-                                                <tr>
-                                                  <th scope="row">Castiel Garrison</th>
-                                                  <td>CastielGarrison@gmail.com</td>
-                                                   <td>April 31 2023</td>
-                                                  <td><a href="" class="btn btn-sm btn-primary">View</a></td> <!--NOTE: The file destination should be changed before running this project.-->
-                                                </tr>
-                                              </tbody>
-                                            </table>
-                                      </div>
-                                  </div>
-                              </div>
-                         </div>
-                    <div class="col-12 col-xl-4">
-                        <div class="card">
-                            <h5 class="card-header">Computer Science Expo Participants:</h5>
-                            <div class="card-body">
-                                <div id="traffic-chart"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <footer class="pt-5 d-flex justifyFT'-content-between">
-                    <span>Copyright © 2024-2025<a href=""> <!--Add your own link here.-->
-                      The Beta Testing Studios</a>
-                    </span>
-                    <ul class="nav m-0">
-                        <li class="nav-item">
-                      <a class="nav-link text-secondary" aria-current="page" href="">Privacy Policy</a> <!--Add your own link here.-->
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link text-secondary" href="">Terms and conditions</a> <!--Add your own link here.-->
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link text-secondary" href="">Contact</a> <!--Add your own link here.-->
-                        </li>
-                      </ul>
-                </footer>
-            </main>
-        </div>
+  <nav class="navbar navbar-light bg-light p-3">
+    <div class="d-flex col-12 col-md-3 col-lg-2 mb-2 mb-lg-0 flex-wrap flex-md-nowrap justify-content-between">
+      <a class="navbar-brand" href=""> <!--NOTE: The file destination should be changed before running this project.-->
+        Teacher's Dashboard
+      </a>
+      <button class="navbar-toggler d-md-none collapsed mb-3" type="button" data-toggle="collapse"
+        data-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+    <div class="col-12 col-md-4 col-lg-2">
+      <input class="form-control form-control-dark" type="text" placeholder="Search" aria-label="Search">
+    </div>
+    <div class="col-12 col-md-5 col-lg-8 d-flex align-items-center justify-content-md-end mt-3 mt-md-0">
+      <div class="mr-3 mt-1">
 
-<div id="vanilla_js">
-
-      <script>
-        
-        new Chartist.Line('#traffic-chart', {
-          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June'],
-          series: [
-            [230, 250, 200, 340, 560, 640]
-          ]
-        }, {
-        low: 0,
-        showArea: true
-      });
-      
-      </script>
-      
       </div>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+          aria-expanded="false" style="background-color: #0d59fd;">
+          Welcome back!
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <li><a class="dropdown-item" href="Settings/Settings.html">Settings</a></li>
+          <li><a class="dropdown-item" href="Messages.html">Messages</a></li>
+          <li><a class="dropdown-item" href="index.html"><strong style="color: #0d59fd;">Home</strong></a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container-fluid">
+    <div class="row">
+      <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+        <div class="position-sticky">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="index.html">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-home">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                  <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+                <span class="ml-2">Dashboard</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href=""> <!--Add your own link here.-->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-file">
+                  <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                  <polyline points="13 2 13 9 20 9"></polyline>
+                </svg>
+                <span class="ml-2">Events</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="About Project.html">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-shopping-cart">
+                  <circle cx="9" cy="21" r="1"></circle>
+                  <circle cx="20" cy="21" r="1"></circle>
+                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                <span class="ml-2">About</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href=""> <!--Add your own link here.-->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-users">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+                <span class="ml-2">Facilities</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href=""> <!--Add your own link here.-->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-bar-chart-2">
+                  <line x1="18" y1="20" x2="18" y2="10"></line>
+                  <line x1="12" y1="20" x2="12" y2="4"></line>
+                  <line x1="6" y1="20" x2="6" y2="14"></line>
+                </svg>
+                <span class="ml-2">Contact</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="">
+                <!--NOTE: The file destination should be changed before running this project.-->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-layers">
+                  <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                  <polyline points="2 17 12 22 22 17"></polyline>
+                  <polyline points="2 12 12 17 22 12"></polyline>
+                </svg>
+                <span class="ml-2">Privacy Policy</span>
+              </a>
+            </li>
+      </nav>
+      <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          </ol>
+        </nav>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="row my-4">
 
- </body>
+              <div class="col-12 col-md-6 mb-4 mb-lg-0 col-lg-3">
+                <div class="card">
+                  <h5 class="card-header">Current month Admissions:</h5>
+                  <div class="card-body">
+                    <p>
+                      This pertains to the admission of new students to our school. Admission is based on the number of
+                      transfer credits per unit (students) from other educational institutions. This criteria plays a
+                      crucial role in the enrollment process of new students.
+                    </p>
+                    <h5 class="card-title">11</h5>
+                    <p class="card-text">October 1 - November 1</p>
+                    <p class="card-textr" style="color: rgb(57, 193, 57);">2.6% increase since last month</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-6 col-lg-3 mb-4 mb-lg-0">
+                <div class="card">
+                  <h5 class="card-header">SOF IGKO - General Knowledge (Grades 1 to 10)</h5>
+                  <div class="card-body">
+                    <p>
+                      Calling all curious minds in Grades 1-10! Are you ready to put your general knowledge to the test?
+                      Join the exciting world of SOF IGKO (International General Knowledge Olympiad) and embark on a
+                      journey of discovery! Click this <a href="About IGKO.html">link</a> to know more.
+                    </p>
+                    <h5 class="card-title">10 Students Enrolled</h5>
+                    <p class="card-text">October 1 - November 1</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-6 mb-4 mb-lg-0 col-lg-3">
+                <div class="card">
+                  <h5 class="card-header">Homework completion:</h5>
+                  <div class="card-body">
+                    <p>
+                      This section outlines the specific deadlines set for students to complete their homework
+                      assignments and the procedures for identifying and addressing students who have not completed
+                      their assignments within the given timeframe.
+                    </p>
+                    <h5 class="card-title">7 / 18 Students</h5>
+                    <p class="card-text">October 1 - November 1</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <h2>School Dashboard Calendar</h2>
+            <div id="calendar"></div>
+
+            <h2>School Dashboard Calendar & Events</h2>
+            <div id="calendar"></div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Event</th>
+                </tr>
+                <tr>
+                  <th>01-10-2024</th>
+                  <th>School closes</th>
+                </tr>
+                <tr>
+                  <th>14-10-2024</th>
+                  <th>School re-opens</th>
+                </tr>
+                <tr>
+                  <th>15-10-2024</th>
+                  <th>SOF IGKO - General Knowledge (Grades 1 to 10)</th>
+                </tr>
+                <tr>
+                  <th>18-10-2024</th>
+                  <th>SOF NSO - Science (Grades 1 to 12)</th>
+                </tr>
+                <tr>
+                  <th>22-10-2024</th>
+                  <th>SOF IMO - Mathematics (Grades 1 to 12)</th>
+                </tr>
+                <tr>
+                  <th>08-11-2024</th>
+                  <th>SOF IEO - English (Grades 1 to 12)</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+
+            <div class="row">
+              <div class="col-12 col-xl-8 mb-4 mb-lg-0">
+                <div class="card">
+                  <h5 class="card-header">Recent Homework submissions:</h5>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table class="table">
+                        <tbody>
+                          <tr>
+                            <th scope="row">Briar Mendoza</th>
+                            <td>BriarMendoza@gmail.com</td>
+                            <td>September 14 2024</td>
+                            <td><a href="Widgets/Widget1.html" class="btn btn-sm btn-primary">View</a></td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Dominic Curtis</th>
+                            <td>DominicCurtis@gmail.com</td>
+                            <td>September 17 2024</td>
+                            <td><a href="Widgets/Widget1.html" class="btn btn-sm btn-primary">View</a></td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Alexis Welch</th>
+                            <td>AlexisWelch@gmail.com</td>
+                            <td>September 19 2024</td>
+                            <td><a href="Widgets/Widget1.html" class="btn btn-sm btn-primary">View</a></td>
+
+                          </tr>
+                          <tr>
+                            <th scope="row">Hendrix Huang</th>
+                            <td>HendrixHuang@gmail.com</td>
+                            <td>September 24 2024</td>
+                            <td><a href="Widgets/Widget1.html" class="btn btn-sm btn-primary">View</a></td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Francesca Rangel</th>
+                            <td>FrancescaRangel@gmail.com</td>
+                            <td>September 25 2024</td>
+                            <td><a href="Widgets/Widget1.html" class="btn btn-sm btn-primary">View</a></td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Saint Brady</th>
+                            <td>SaintBrady@gmail.com</td>
+                            <td>September 28 2024</td>
+                            <td><a href="Widgets/Widget1.html" class="btn btn-sm btn-primary">View</a></td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Castiel Garrison</th>
+                            <td>CastielGarrison@gmail.com</td>
+                            <td>September 31 2024</td>
+                            <td><a href="Widgets/Widget1.html" class="btn btn-sm btn-primary">View</a></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-xl-4">
+              <div class="card">
+                <h5 class="card-header">Computer Science Expo Participants:</h5>
+                <div class="card-body">
+                  <div id="traffic-chart"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <footer>
+          <small>
+            Copyright © 2024 The Beta Testing Studios. All Rights Reserved.
+            <a style="color:#0d59fd;" href="https://ps1894002.wixsite.com/the-codeground/privacy-policy">Privacy
+              Policy</a>, <a style="color:#0d59fd;" href="https://ps1894002.wixsite.com/the-codeground">Visit our
+              other websites!</a>
+            <a style="color:#0d59fd;" href="https://ps1894002.wixsite.com/the-codeground/privacy-policy">Terms and
+              Conditions</a>
+            <a style="color:#0d59fd;" href="https://ps1894002.wixsite.com/the-codeground/privacy-policy">Contact</a>
+          </small>
+        </footer>
+
+    </div>
+  </div>
+  </main>
+  </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+    integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+
+  <script>
+
+    new Chartist.Line('#traffic-chart', {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June'],
+      series: [
+        [230, 250, 200, 340, 560, 640]
+      ]
+    }, {
+      low: 0,
+      showArea: true
+    });
+
+  </script>
+
+  <script>
+
+    function generateCalendar(year, month) {
+      const calendarDiv = document.getElementById('calendar');
+      const today = new Date();
+
+      const firstDay = new Date(year, month, 1);
+      const lastDay = new Date(year, month + 1, 0);
+      const firstDayOfWeek = firstDay.getDay();
+
+      let tableHTML = '<table>';
+      tableHTML += '<tr><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></tr><tr>';
+
+      for (let i = 0; i < firstDayOfWeek; i++) {
+        tableHTML += '<td></td>';
+      }
+
+      for (let day = 1; day <= lastDay.getDate(); day++) {
+        const date = new Date(year, month, day);
+        const isToday = date.toDateString() === today.toDateString();
+        tableHTML += `<td ${isToday ? 'class="today"' : ''}>${day}</td>`;
+
+        if (date.getDay() === 6) { // Start a new row on Saturday.
+          tableHTML += '</tr><tr>';
+        }
+      }
+
+      tableHTML += '</tr></table>';
+      calendarDiv.innerHTML = tableHTML;
+
+      events.forEach(event => {
+        if (event.date.getMonth() === month) {  // Checkf if events are in the current month being displayed.
+          const dayCell = calendarDiv.querySelector(`td:nth-child(${event.date.getDate() + firstDayOfWeek + 1})`); // Find cell corresponding to event day.
+          if (dayCell) { dayCell.innerHTML += "<br><span style='font-size: smaller;'>" + event.title + "</span>"; }
+        }
+      });
+
+    }
+
+    const currentDate = new Date();
+    generateCalendar(currentDate.getFullYear(), currentDate.getMonth());
+
+    document.addEventListener('DOMContentLoaded', () => {
+
+      let currentYear = currentDate.getFullYear();
+      let currentMonth = currentDate.getMonth();
+
+      const prevMonthButton = document.createElement('button');
+      prevMonthButton.textContent = 'Previous Month';
+      prevMonthButton.addEventListener('click', () => {
+        currentMonth--;
+        if (currentMonth < 0) {
+          currentYear--;
+          currentMonth = 11;
+        }
+
+        generateCalendar(currentYear, currentMonth)
+      });
+
+
+      const nextMonthButton = document.createElement('button');
+      nextMonthButton.textContent = 'Next Month';
+      nextMonthButton.addEventListener('click', () => {
+        currentMonth++;
+        if (currentMonth > 11) {
+          currentYear++;
+          currentMonth = 0;
+        }
+        generateCalendar(currentYear, currentMonth)
+      });
+
+
+      document.body.insertBefore(prevMonthButton, document.getElementById('calendar'))
+      document.body.insertBefore(nextMonthButton, document.getElementById('calendar'))
+    });
+
+  </script>
+
+  </div>
+
+</body>
+
 </html>
